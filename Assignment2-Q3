@@ -1,0 +1,15 @@
+class PostfixSum {
+    public static void main(String[] args) {
+        int Fuel[] = {5, 10, 3, 7, 8};
+        int m = Fuel.length;
+        int PostfixSum[] = new int[m]; 
+        PostfixSum[m - 1] = Fuel[m - 1];
+        for (int i = m - 2; i >= 0; i--) {
+            PostfixSum[i] = PostfixSum[i + 1] + Fuel[i]; 
+        }
+        System.out.print("PostfixSum[] = ");
+        for (int sum : PostfixSum) {
+            System.out.print(sum + " ");
+        }
+    }
+}
