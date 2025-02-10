@@ -1,0 +1,15 @@
+class PrefixSumCalculator {
+    public static void main(String[] args) {
+        int Sales[] = {10, 20, 15, 30, 25};
+        int n = Sales.length;
+        int PrefixSum[] = new int[n];  
+        PrefixSum[0] = Sales[0];
+        for (int i = 1; i < n; i++) {
+            PrefixSum[i] = PrefixSum[i - 1] + Sales[i]; 
+        }
+       System.out.print("PrefixSum[] = ");
+        for (int sum : PrefixSum) {
+            System.out.print(sum + " ");
+        }
+    }
+}
