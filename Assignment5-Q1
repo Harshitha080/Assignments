@@ -1,22 +1,12 @@
 import java.util.Stack;
 
 public class MinStack {
-    private Stack<Integer> stack;
-    private Stack<Integer> minStack;
-
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
+    private Stack<Integer> stack = new Stack<>();
+    private Stack<Integer> minStack = new Stack<>();
     
-    public void push(int val) {
-        stack.push(val);
-        // Push the new min value onto minStack
-        if (minStack.isEmpty() || val <= minStack.peek()) {
-            minStack.push(val);
-        } else {
-            minStack.push(minStack.peek());
-        }
+    public void push(int x) {
+        stack.push(x);
+        minStack.push(minStack.isEmpty() ? x : Math.min(x, minStack.peek()));
     }
     
     public void pop() {
@@ -31,15 +21,15 @@ public class MinStack {
     public int getMin() {
         return minStack.peek();
     }
-   
+    
     public static void main(String[] args) {
-        MinStack minStack = new MinStack();
-        minStack.push(-2);
-        minStack.push(0);
-        minStack.push(-3);
-        System.out.println("getMin() -> " + minStack.getMin()); // returns -3
-        minStack.pop();
-        System.out.println("top() -> " + minStack.top());       // returns 0
-        System.out.println("getMin() -> " + minStack.getMin());   // returns -2
+        MinStack ms = new MinStack();
+        ms.push(-2);
+        ms.push(0);
+        ms.push(-3);
+        System.out.println(ms.getMin()); // -3
+        ms.pop();
+        System.out.println(ms.top());    // 0
+        System.out.println(ms.getMin()); // -2
     }
 }
